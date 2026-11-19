@@ -1,4 +1,14 @@
+# Russian Localization (ReSaver Renewed RU)
+
 # FallrimTools ReSaver (Renewed)
+
+This repository is a fork of [awesmdiver/fallrimtools-resaver-renewed](https://github.com/awesmdiver/fallrimtools-resaver-renewed) with a full Russian translation of the UI, README and changelog.
+
+- **Translated version:** ReSaver Renewed 1.0.0
+- **Translated by:** subirs ([Nexus Mods](https://www.nexusmods.com/users/), вставьте ссылку на ваш профиль, если хотите)
+- **Nexus Mods page:** [вставьте ссылку на страницу мода]
+- Translation changes are limited to UI strings, `Strings.properties`, README and changelog. No functional code was modified.
+- Licensed under the same Apache 2.0 as the original project.
 
 A community-maintained, modernized fork of [FallrimTools ReSaver](https://github.com/mdfairch/FallrimTools) — the save file editor for **Skyrim** (LE, SE, VR) and **Fallout 4**.
 

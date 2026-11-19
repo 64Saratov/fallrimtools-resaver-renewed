@@ -81,7 +81,7 @@ public class Opener extends SwingWorker<Opener.Result, Double> {
             return null;
         }
 
-        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Opening");
+        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Открытие");
         this.WINDOW.addWindowListener(this.LISTENER);
         this.WINDOW.clearESS();
 

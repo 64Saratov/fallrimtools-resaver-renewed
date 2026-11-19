@@ -65,7 +65,7 @@ public class BatchCleaner extends SwingWorker<Boolean, Double> {
      */
     @Override
     protected Boolean doInBackground() throws Exception {
-        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Batch cleaning");
+        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Пакетная очистка");
         this.WINDOW.addWindowListener(this.LISTENER);
 
         try {
@@ -81,8 +81,8 @@ public class BatchCleaner extends SwingWorker<Boolean, Double> {
                 TEXT.setWrapStyleWord(false);
 
                 final JScrollPane SCROLLER = new JScrollPane(TEXT);
-                SCROLLER.setBorder(BorderFactory.createTitledBorder("Enter Scripts"));
-                final String TITLE = "Batch Clean";
+                SCROLLER.setBorder(BorderFactory.createTitledBorder("Введите скрипты"));
+                final String TITLE = "Пакетная очистка";
                 int result = JOptionPane.showConfirmDialog(this.WINDOW, SCROLLER, TITLE, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                 if (result == JOptionPane.CANCEL_OPTION) {
@@ -134,8 +134,8 @@ public class BatchCleaner extends SwingWorker<Boolean, Double> {
                     } else {
                         LOG.info(String.format("Definition present, prompting for deletion: %s", DEF));
                         final String PROMPT = MATCHER.group(2).trim();
-                        final String MSG = String.format("Delete %s?\n%s", DEF, PROMPT);
-                        final String TITLE = "Confirm";
+                        final String MSG = String.format("Удалить %s?\n%s", DEF, PROMPT);
+                        final String TITLE = "Подтверждение";
                         int result = JOptionPane.showConfirmDialog(this.WINDOW, MSG, TITLE, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
                         if (result == JOptionPane.OK_OPTION) {
                             CLEAN_NAMES.add(DEF);
@@ -148,21 +148,21 @@ public class BatchCleaner extends SwingWorker<Boolean, Double> {
 
             // If no scripts matched, abort.
             if (CLEAN_NAMES.isEmpty()) {
-                final String MSG = "There were no matches.";
-                final String TITLE = "No matches";
+                final String MSG = "Совпадений не найдено.";
+                final String TITLE = "Совпадений не найдено";
                 JOptionPane.showMessageDialog(this.WINDOW, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
                 return false;
             }
 
             final StringBuilder BUF = new StringBuilder();
-            BUF.append("The following scripts will be cleaned: \n\n");
+            BUF.append("Будут очищены следующие скрипты: \n\n");
             CLEAN_NAMES.forEach(v -> BUF.append(v).append('\n'));
 
             final JTextArea TEXT = new JTextArea(BUF.toString());
             TEXT.setColumns(40);
             TEXT.setEditable(false);
             final JScrollPane SCROLLER = new JScrollPane(TEXT);
-            final String TITLE = "Batch Clean";
+            final String TITLE = "Пакетная очистка";
 
             int result = JOptionPane.showConfirmDialog(this.WINDOW, SCROLLER, TITLE, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (result == JOptionPane.NO_OPTION) {
@@ -188,7 +188,7 @@ public class BatchCleaner extends SwingWorker<Boolean, Double> {
             long references = REMOVED.stream().filter(v -> v instanceof Reference).count();
             long threads = THREADS.size();
 
-            final String MSG = String.format("Cleaned %d scripts and %d corresponding instances.\nCleaned %s structs and %d corresponding instances.\nCleaned %d references.\n%d threads were terminated.", scripts, scriptInstances, structs, structsInstances, references, threads);
+            final String MSG = String.format("Очищено скриптов: %d и связанных с ними экземпляров: %d.\nОчищено структур: %s и связанных с ними экземпляров: %d.\nОчищено ссылок: %d.\nЗавершено потоков: %d.", scripts, scriptInstances, structs, structsInstances, references, threads);
             JOptionPane.showMessageDialog(this.WINDOW, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             return true;
 

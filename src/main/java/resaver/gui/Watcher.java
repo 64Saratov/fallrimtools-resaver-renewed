@@ -183,8 +183,8 @@ public class Watcher {
                 LOG.info("WatcherService interrupted.");
 
             } catch (IOException ex) {
-                final String MSG = String.format("Error.\n%s", ex.getMessage());
-                JOptionPane.showMessageDialog(WINDOW, MSG, "Watch Error", JOptionPane.ERROR_MESSAGE);
+                final String MSG = String.format("Ошибка.\n%s", ex.getMessage());
+                JOptionPane.showMessageDialog(WINDOW, MSG, "Ошибка отслеживания", JOptionPane.ERROR_MESSAGE);
                 LOG.log(Level.SEVERE, "Watcher Error.", ex);
 
             } finally {

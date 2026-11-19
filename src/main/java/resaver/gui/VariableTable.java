@@ -45,10 +45,10 @@ public class VariableTable extends JTable {
         this.context = null;
         this.WINDOW = Objects.requireNonNull(window);
         this.MI_FIND = new JMenuItem(I18N.getString("VARTABLE_FIND"), KeyEvent.VK_F);
-        this.MI_ADD = new JMenuItem("Add Entry");
-        this.MI_REM = new JMenuItem("Remove Entry");
-        this.MI_SHIFTUP = new JMenuItem("Shift Up");
-        this.MI_SHIFTDOWN = new JMenuItem("Shift Down");
+        this.MI_ADD = new JMenuItem("Добавить элемент");
+        this.MI_REM = new JMenuItem("Удалить элемент");
+        this.MI_SHIFTUP = new JMenuItem("Сдвинуть вверх");
+        this.MI_SHIFTDOWN = new JMenuItem("Сдвинуть вниз");
         this.TABLE_POPUP_MENU = new JPopupMenu(I18N.getString("VARTABLE_MENU"));
         this.initComponent();
     }

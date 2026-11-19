@@ -48,13 +48,13 @@ public class SupportDialog {
         String text = html(
                 body(
                         //style().with(rawHtml(getStyle())),
-                        p("FallrimTools and ReSaver take an extraordinary amount of time and effort to create and maintain,"),
-                        p ("and I always try to help people with their savefile problems on NexusMods and Discord."),
-                        p("If you'd like to contribute to that work, and help me to afford rent and food, that would be absolutely lovely. \u2665"),
-                        p(a("You can support me and ReSaver on Patreon (patreon.com/user?u=18285974).").withHref("https://www.patreon.com/user?u=18285974")),
-                        p(a("You can support me and ReSaver through PayPal (paypal.me/MarkDFSoftware).").withHref("https://www.paypal.me/MarkDFSoftware")),
-                        p(a("You can support me and ReSaver through NexusMods (nexusmods.com/users/723902).").withHref("https://www.nexusmods.com/users/723902")),
-                        p("Any support is welcome!")
+                        p("FallrimTools и ReSaver требуют огромного количества времени и сил на создание и поддержку,"),
+                        p ("а я всегда стараюсь помогать людям с проблемами сохранений на NexusMods и в Discord."),
+                        p("Если хотите поддержать эту работу и помочь мне оплачивать жильё и еду, буду очень признателен. \u2665"),
+                        p(a("Поддержать меня и ReSaver на Patreon (patreon.com/user?u=18285974).").withHref("https://www.patreon.com/user?u=18285974")),
+                        p(a("Поддержать меня и ReSaver через PayPal (paypal.me/MarkDFSoftware).").withHref("https://www.paypal.me/MarkDFSoftware")),
+                        p(a("Поддержать меня и ReSaver через NexusMods (nexusmods.com/users/723902).").withHref("https://www.nexusmods.com/users/723902")),
+                        p("Любая поддержка приветствуется!")
                 ).attr("style", getStyle())
         ).toString();
         
@@ -75,9 +75,9 @@ public class SupportDialog {
         final ImageIcon ICON = SupportDialog.getLogo();
 
         if (ICON == null) {
-            JOptionPane.showMessageDialog(window, pane, "Support", 0);
+            JOptionPane.showMessageDialog(window, pane, "Поддержка", 0);
         } else {
-            JOptionPane.showMessageDialog(window, pane, "Support", 0, ICON);
+            JOptionPane.showMessageDialog(window, pane, "Поддержка", 0, ICON);
         }
     }
 

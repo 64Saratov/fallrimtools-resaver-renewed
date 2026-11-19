@@ -60,7 +60,7 @@ public class Saver extends SwingWorker<ESS, Double> {
             return null;
         }
 
-        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Saving");
+        ProgressIndicator PROGRESS = this.WINDOW.createProgressIndicator("Сохранение");
         this.WINDOW.addWindowListener(this.LISTENER);
 
         try {
@@ -106,7 +106,7 @@ public class Saver extends SwingWorker<ESS, Double> {
         } catch (Exception | Error ex) {
             final String MSG = MessageFormat.format(I18N.getString("SAVER_ERROR"), this.SAVEFILE.getFileName(), ex.getMessage());
             LOG.log(Level.SEVERE, MSG, ex);
-            JOptionPane.showMessageDialog(this.WINDOW, MSG, "Write Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.WINDOW, MSG, "Ошибка записи", JOptionPane.ERROR_MESSAGE);
             return null;
 
         } finally {

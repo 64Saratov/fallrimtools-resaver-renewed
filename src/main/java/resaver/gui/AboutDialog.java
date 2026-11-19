@@ -84,7 +84,7 @@ public class AboutDialog {
             if (date != null) sb.append(" (").append(date).append(")");
             return sb;
         } catch (IOException | ClassCastException ex) {
-            return "(development version)";
+            return "(версия для разработки)";
         }
     }
 

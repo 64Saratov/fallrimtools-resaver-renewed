@@ -96,7 +96,7 @@ final public class SaveWindow extends JFrame {
         this.TREESCROLLER = new JScrollPane(this.TREE);
         this.TOPPANEL = new JPanel();
         this.MODPANEL = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        this.MODLABEL = new JLabel("Mod Filter:");
+        this.MODLABEL = new JLabel("Фильтр модов:");
         this.MODCOMBO = new JComboBox<>();
         this.PLUGINCOMBO = new JComboBox<>();
         this.FILTERFIELD = new JTreeFilterField(() -> updateFilters(false), PREFS.get("settings.regex", ""));
@@ -118,72 +118,72 @@ final public class SaveWindow extends JFrame {
         this.RIGHTSPLITTER = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.INFOSCROLLER, this.DATASCROLLER);
         this.MAINSPLITTER = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.MAINPANEL, this.RIGHTSPLITTER);
         this.MENUBAR = new JMenuBar();
-        this.MENU_FILE = new JMenu("File");
-        this.MENU_FILTER = new JMenu("Filter");
-        this.MENU_CLEAN = new JMenu("Clean");
-        this.MENU_OPTIONS = new JMenu("Options");
-        this.MENU_DATA = new JMenu("Data");
-        this.MENU_HELP = new JMenu("Help");
+        this.MENU_FILE = new JMenu("Файл");
+        this.MENU_FILTER = new JMenu("Фильтр");
+        this.MENU_CLEAN = new JMenu("Очистка");
+        this.MENU_OPTIONS = new JMenu("Настройки");
+        this.MENU_DATA = new JMenu("Данные");
+        this.MENU_HELP = new JMenu("Справка");
 
-        this.MI_EXIT = new JMenuItem("Exit", KeyEvent.VK_E);
-        this.MI_LOAD = new JMenuItem("Open", KeyEvent.VK_O);
-        this.MI_LOADESPS = new JMenuItem("Parse ESP/ESMs.", KeyEvent.VK_P);
-        this.MI_SAVE = new JMenuItem("Save", KeyEvent.VK_S);
-        this.MI_SAVEAS = new JMenuItem("Save As", KeyEvent.VK_A);
-        this.MI_EXPORTPLUGINS = new JMenuItem("Export plugin list", KeyEvent.VK_X);
-        this.MI_SETTINGS = new JMenuItem("Settings");
-        this.MI_WATCHSAVES = new JCheckBoxMenuItem("Watch Savefile Directory", PREFS.getBoolean("settings.watch", false));
+        this.MI_EXIT = new JMenuItem("Выход", KeyEvent.VK_E);
+        this.MI_LOAD = new JMenuItem("Открыть", KeyEvent.VK_O);
+        this.MI_LOADESPS = new JMenuItem("Разобрать ESP/ESM.", KeyEvent.VK_P);
+        this.MI_SAVE = new JMenuItem("Сохранить", KeyEvent.VK_S);
+        this.MI_SAVEAS = new JMenuItem("Сохранить как", KeyEvent.VK_A);
+        this.MI_EXPORTPLUGINS = new JMenuItem("Экспортировать список плагинов", KeyEvent.VK_X);
+        this.MI_SETTINGS = new JMenuItem("Параметры");
+        this.MI_WATCHSAVES = new JCheckBoxMenuItem("Следить за папкой сохранений", PREFS.getBoolean("settings.watch", false));
 
-        this.MI_USEMO2 = new JCheckBoxMenuItem("Mod Organizer 2 integration", PREFS.getBoolean("settings.useMO2", false));
+        this.MI_USEMO2 = new JCheckBoxMenuItem("Интеграция с Mod Organizer 2", PREFS.getBoolean("settings.useMO2", false));
         
-        this.MI_SHOWUNATTACHED = new JCheckBoxMenuItem("Show unattached instances", PREFS.getBoolean("settings.showUnattached", false));
-        this.MI_SHOWUNDEFINED = new JCheckBoxMenuItem("Show undefined elements", PREFS.getBoolean("settings.showUndefined", false));
-        this.MI_SHOWNOPARENTS = new JCheckBoxMenuItem("Show scripts with no parent", PREFS.getBoolean("settings.showNoParents", false));
-        this.MI_SHOWMISSINGPARENTS = new JCheckBoxMenuItem("Show scripts with missing parent", PREFS.getBoolean("settings.showMissingParents", false));
+        this.MI_SHOWUNATTACHED = new JCheckBoxMenuItem("Показывать неподключённые экземпляры", PREFS.getBoolean("settings.showUnattached", false));
+        this.MI_SHOWUNDEFINED = new JCheckBoxMenuItem("Показывать неопределённые элементы", PREFS.getBoolean("settings.showUndefined", false));
+        this.MI_SHOWNOPARENTS = new JCheckBoxMenuItem("Показывать скрипты без родителя", PREFS.getBoolean("settings.showNoParents", false));
+        this.MI_SHOWMISSINGPARENTS = new JCheckBoxMenuItem("Показывать скрипты с отсутствующим родителем", PREFS.getBoolean("settings.showMissingParents", false));
         
-        this.MI_SHOWMEMBERLESS = new JCheckBoxMenuItem("Show memberless instances", PREFS.getBoolean("settings.showMemberless", false));
-        this.MI_SHOWCANARIES = new JCheckBoxMenuItem("Show zeroed canaries", PREFS.getBoolean("settings.showCanaries", false));
-        this.MI_SHOWNULLREFS = new JCheckBoxMenuItem("Show Formlists containg nullrefs", PREFS.getBoolean("settings.showNullrefs", false));
+        this.MI_SHOWMEMBERLESS = new JCheckBoxMenuItem("Показывать экземпляры без участников", PREFS.getBoolean("settings.showMemberless", false));
+        this.MI_SHOWCANARIES = new JCheckBoxMenuItem("Показывать обнулённые канарейки", PREFS.getBoolean("settings.showCanaries", false));
+        this.MI_SHOWNULLREFS = new JCheckBoxMenuItem("Показывать формлисты с пустыми ссылками", PREFS.getBoolean("settings.showNullrefs", false));
         
-        this.MI_SHOWPARSED0 = new JRadioButtonMenuItem("Ignore", true);
-        this.MI_SHOWPARSED1 = new JRadioButtonMenuItem("Show fully parsed ChangeForms", false);
-        this.MI_SHOWPARSED2 = new JRadioButtonMenuItem("Show partial ChangeForms", false);
-        this.MI_SHOWPARSED3 = new JRadioButtonMenuItem("Show unparsed ChangeForms", false);
+        this.MI_SHOWPARSED0 = new JRadioButtonMenuItem("Игнорировать", true);
+        this.MI_SHOWPARSED1 = new JRadioButtonMenuItem("Показывать полностью разобранные ChangeForms", false);
+        this.MI_SHOWPARSED2 = new JRadioButtonMenuItem("Показывать частично разобранные ChangeForms", false);
+        this.MI_SHOWPARSED3 = new JRadioButtonMenuItem("Показывать неразобранные ChangeForms", false);
         
-        this.MI_SHOWNONEXISTENTCREATED = new JCheckBoxMenuItem("Show non-existent-form instances", PREFS.getBoolean("settings.showNonexistent", false));
-        this.MI_SHOWLONGSTRINGS = new JCheckBoxMenuItem("Show long strings (512ch or more)", PREFS.getBoolean("settings.showLongStrings", false));
-        this.MI_SHOWDELETED = new JCheckBoxMenuItem("Show cell(-1) changeforms", PREFS.getBoolean("settings.showDeleted", false));
-        this.MI_SHOWEMPTY = new JCheckBoxMenuItem("Show empty REFR", PREFS.getBoolean("settings.showEmpty", false));
-        this.MI_SHOWSCRIPTATTACHED = new JCheckBoxMenuItem("Show forms with scripts", PREFS.getBoolean("settings.showAttached", false));
-        this.MI_CHANGEFILTER = new JValueMenuItem<>("ChangeFlag filter (%s)", null);
-        this.MI_CHANGEFORMFILTER = new JValueMenuItem<>("ChangeFormFlag filter (%s)", null);
-        this.MI_CHANGEFORMCONTENTFILTER = new JValueMenuItem<>("ChangeForm Content filter (%s)", "");
+        this.MI_SHOWNONEXISTENTCREATED = new JCheckBoxMenuItem("Показывать экземпляры несуществующих форм", PREFS.getBoolean("settings.showNonexistent", false));
+        this.MI_SHOWLONGSTRINGS = new JCheckBoxMenuItem("Показывать длинные строки (от 512 симв.)", PREFS.getBoolean("settings.showLongStrings", false));
+        this.MI_SHOWDELETED = new JCheckBoxMenuItem("Показывать changeforms cell(-1)", PREFS.getBoolean("settings.showDeleted", false));
+        this.MI_SHOWEMPTY = new JCheckBoxMenuItem("Показывать пустые REFR", PREFS.getBoolean("settings.showEmpty", false));
+        this.MI_SHOWSCRIPTATTACHED = new JCheckBoxMenuItem("Показывать формы со скриптами", PREFS.getBoolean("settings.showAttached", false));
+        this.MI_CHANGEFILTER = new JValueMenuItem<>("Фильтр ChangeFlag (%s)", null);
+        this.MI_CHANGEFORMFILTER = new JValueMenuItem<>("Фильтр ChangeFormFlag (%s)", null);
+        this.MI_CHANGEFORMCONTENTFILTER = new JValueMenuItem<>("Фильтр содержимого ChangeForm (%s)", "");
         this.MI_CHANGEFORMCONTENTFILTER.setValue(PREFS.get("settings.cfc_filter", ""));
         
-        this.MI_REMOVEUNATTACHED = new JMenuItem("Remove unattached instances", KeyEvent.VK_1);
-        this.MI_REMOVEUNDEFINED = new JMenuItem("Remove undefined elements", KeyEvent.VK_2);
-        this.MI_RESETHAVOK = new JMenuItem("Reset Havok", KeyEvent.VK_3);
-        this.MI_CLEANSEFORMLISTS = new JMenuItem("Purify FormLists", KeyEvent.VK_4);
-        this.MI_REMOVENONEXISTENT = new JMenuItem("Remove non-existent form instances", KeyEvent.VK_5);
-        this.MI_BATCHCLEAN = new JMenuItem("Batch Clean", KeyEvent.VK_6);
-        this.MI_KILL = new JMenuItem("Kill Listed");
+        this.MI_REMOVEUNATTACHED = new JMenuItem("Удалить неподключённые экземпляры", KeyEvent.VK_1);
+        this.MI_REMOVEUNDEFINED = new JMenuItem("Удалить неопределённые элементы", KeyEvent.VK_2);
+        this.MI_RESETHAVOK = new JMenuItem("Сбросить Havok", KeyEvent.VK_3);
+        this.MI_CLEANSEFORMLISTS = new JMenuItem("Очистить формлисты", KeyEvent.VK_4);
+        this.MI_REMOVENONEXISTENT = new JMenuItem("Удалить экземпляры несуществующих форм", KeyEvent.VK_5);
+        this.MI_BATCHCLEAN = new JMenuItem("Пакетная очистка", KeyEvent.VK_6);
+        this.MI_KILL = new JMenuItem("Завершить выбранные");
 
-        this.MI_SHOWMODS = new JCheckBoxMenuItem("Show Mod Filter box", PREFS.getBoolean("settings.showMods", false));
+        this.MI_SHOWMODS = new JCheckBoxMenuItem("Показывать поле фильтра модов", PREFS.getBoolean("settings.showMods", false));
 
-        this.MI_LOOKUPID = new JMenuItem("Lookup ID by name");
-        this.MI_LOOKUPBASE = new JMenuItem("Lookup base object/npc");
-        this.MI_ANALYZE_ARRAYS = new JMenuItem("Analyze Arrays Block");
-        this.MI_COMPARETO = new JMenuItem("Compare To");
+        this.MI_LOOKUPID = new JMenuItem("Найти ID по имени");
+        this.MI_LOOKUPBASE = new JMenuItem("Найти базовый объект/NPC");
+        this.MI_ANALYZE_ARRAYS = new JMenuItem("Разобрать блок массивов");
+        this.MI_COMPARETO = new JMenuItem("Сравнить с");
 
-        this.MI_SHOWLOG = new JMenuItem("Show Log", KeyEvent.VK_S);
-        this.MI_ABOUT = new JMenuItem("About", KeyEvent.VK_A);
-        this.MI_SUPPORT = new JMenuItem("Support");
+        this.MI_SHOWLOG = new JMenuItem("Показать журнал", KeyEvent.VK_S);
+        this.MI_ABOUT = new JMenuItem("О программе", KeyEvent.VK_A);
+        this.MI_SUPPORT = new JMenuItem("Поддержка");
 
-        this.BTN_CLEAR_FILTER = new JButton("Clear Filters");
+        this.BTN_CLEAR_FILTER = new JButton("Сбросить фильтры");
         this.LOGWINDOW = new LogWindow();
         this.LBL_MEMORY = new MemoryLabel();
-        this.LBL_WATCHING = new JLabel("WATCHING");
-        this.LBL_SCANNING = new JLabel("SCANNING");
+        this.LBL_WATCHING = new JLabel("ОТСЛЕЖИВАНИЕ");
+        this.LBL_SCANNING = new JLabel("СКАНИРОВАНИЕ");
         this.WATCHER = new Watcher(this, Optional.empty());
 
         this.initComponents(path, autoParse);
@@ -204,8 +204,8 @@ final public class SaveWindow extends JFrame {
         this.resetTitle(null);
         this.setDropTarget(new ReSaver_RenewedDropTarget(f -> open(f, PREFS.getBoolean("settings.alwaysParsePlugins", true))));
         this.TREE.addTreeSelectionListener(e -> updateContextInformation());
-        this.DATASCROLLER.setBorder(BorderFactory.createTitledBorder(this.DATASCROLLER.getBorder(), "Data"));
-        this.INFOSCROLLER.setBorder(BorderFactory.createTitledBorder(this.INFOSCROLLER.getBorder(), "Information"));
+        this.DATASCROLLER.setBorder(BorderFactory.createTitledBorder(this.DATASCROLLER.getBorder(), "Данные"));
+        this.INFOSCROLLER.setBorder(BorderFactory.createTitledBorder(this.INFOSCROLLER.getBorder(), "Информация"));
         this.MAINSPLITTER.setResizeWeight(0.5);
         this.MAINSPLITTER.setDividerLocation(0.5);
         this.RIGHTSPLITTER.setResizeWeight(0.66);
@@ -213,7 +213,7 @@ final public class SaveWindow extends JFrame {
         this.MAINPANEL.setMinimumSize(new Dimension(350, 400));
         this.PLUGINCOMBO.setRenderer(new PluginListCellRenderer());
         this.PLUGINCOMBO.setPrototypeDisplayValue(Plugin.PROTOTYPE);
-        this.PLUGINCOMBO.setToolTipText("Select a plugin for filtering.");
+        this.PLUGINCOMBO.setToolTipText("Выберите плагин для фильтрации.");
 
         AutoCompletion.enable(this.PLUGINCOMBO);
         AutoCompletion.enable(this.MODCOMBO);
@@ -259,7 +259,7 @@ final public class SaveWindow extends JFrame {
                 null,
                 MI_EXIT);
 
-        final JMenu PARSE_MENU = new JMenu("Changeforms");
+        final JMenu PARSE_MENU = new JMenu("ChangeForms");
         groupMenuItems(MI_SHOWPARSED0, MI_SHOWPARSED1, MI_SHOWPARSED2, MI_SHOWPARSED3);
         fillMenu(PARSE_MENU, 
                 MI_SHOWPARSED0, 
@@ -304,10 +304,10 @@ final public class SaveWindow extends JFrame {
         fillMenu(MENU_OPTIONS, MI_USEMO2, MI_SHOWMODS, MI_SETTINGS);
 
         SortingMethod sort = getSorting();
-        JRadioButtonMenuItem miAlpha = new JRadioButtonMenuItem("Alphabetical", sort==SortingMethod.ALPHA);
-        JRadioButtonMenuItem miSize = new JRadioButtonMenuItem("Size", sort==SortingMethod.SIZE);
-        JRadioButtonMenuItem miMass = new JRadioButtonMenuItem("Mass", sort==SortingMethod.MASS);
-        JRadioButtonMenuItem miNone = new JRadioButtonMenuItem("None", sort==SortingMethod.NONE);
+        JRadioButtonMenuItem miAlpha = new JRadioButtonMenuItem("По алфавиту", sort==SortingMethod.ALPHA);
+        JRadioButtonMenuItem miSize = new JRadioButtonMenuItem("По размеру", sort==SortingMethod.SIZE);
+        JRadioButtonMenuItem miMass = new JRadioButtonMenuItem("По массе", sort==SortingMethod.MASS);
+        JRadioButtonMenuItem miNone = new JRadioButtonMenuItem("Нет", sort==SortingMethod.NONE);
 
         miAlpha.addActionListener(e -> setSorting(SortingMethod.ALPHA));
         miSize.addActionListener(e -> setSorting(SortingMethod.SIZE));        
@@ -315,12 +315,12 @@ final public class SaveWindow extends JFrame {
         miNone.addActionListener(e -> setSorting(SortingMethod.NONE));
         groupMenuItems(miAlpha, miSize, miMass, miNone);
 
-        miAlpha.setToolTipText("Simple alphabetical sorting");
-        miSize.setToolTipText("Sorting by the size of each element and by the number of elements in each group.");
-        miMass.setToolTipText("Very slow and very alpha.");
-        miNone.setToolTipText("Quick.");
+        miAlpha.setToolTipText("Простая сортировка по алфавиту");
+        miSize.setToolTipText("Сортировка по размеру каждого элемента и по количеству элементов в группе.");
+        miMass.setToolTipText("Очень медленно и очень сыро.");
+        miNone.setToolTipText("Быстро.");
 
-        JMenu MENU_SORT = new JMenu("Sorting");
+        JMenu MENU_SORT = new JMenu("Сортировка");
         fillMenu(MENU_SORT, miAlpha, miSize, miMass, miNone);
         
         this.MENU_DATA.setMnemonic('d');
@@ -395,22 +395,22 @@ final public class SaveWindow extends JFrame {
 
         this.BTN_CLEAR_FILTER.addActionListener(e -> updateFilters(true));
 
-        this.MODCOMBO.setToolTipText("Select a mod for filtering.");
-        this.LBL_MEMORY.setToolTipText("Current memory usage.");
-        this.LBL_WATCHING.setToolTipText("When you save your game, ReSaver will automatcally open the new savefile.");
-        this.LBL_SCANNING.setToolTipText("ReSaver is scanning your plugins so that it can add proper names to everything.");
-        this.BTN_CLEAR_FILTER.setToolTipText("Clear all filters.");
-        this.MI_ABOUT.setToolTipText("Shows version information, system information, and an original colour photograph of cats.");
-        this.MI_SHOWLOG.setToolTipText("Show ReSaver's internal log. For development purposes only.");
-        this.MI_ANALYZE_ARRAYS.setToolTipText("Displays the dataAnalyzer for the \'Arrays\' section, which hasn't been fully decoded yet. For development purposes only.");
-        this.MI_COMPARETO.setToolTipText("Compare the current savefile to another one. For development purposes only.");
+        this.MODCOMBO.setToolTipText("Выберите мод для фильтрации.");
+        this.LBL_MEMORY.setToolTipText("Текущее использование памяти.");
+        this.LBL_WATCHING.setToolTipText("Когда вы сохраните игру, ReSaver автоматически откроет новый сейв.");
+        this.LBL_SCANNING.setToolTipText("ReSaver сканирует ваши плагины, чтобы добавить правильные имена всему.");
+        this.BTN_CLEAR_FILTER.setToolTipText("Сбросить все фильтры.");
+        this.MI_ABOUT.setToolTipText("Показывает информацию о версии, о системе и оригинальную цветную фотографию котов.");
+        this.MI_SHOWLOG.setToolTipText("Показать внутренний журнал ReSaver. Только для разработки.");
+        this.MI_ANALYZE_ARRAYS.setToolTipText("Показывает анализатор данных для раздела «Массивы», который ещё не полностью расшифрован. Только для разработки.");
+        this.MI_COMPARETO.setToolTipText("Сравнить текущий сейв с другим. Только для разработки.");
 
-        this.MI_CHANGEFILTER.setToolTipText("Sets a ChangeFlag filter. ChangeFlags describe what kind of changes are present in ChangeForms.");
-        this.MI_CHANGEFORMFILTER.setToolTipText("Sets a ChangeFormFlag filter. ChangeFormFlags are part of a ChangeForm and modify the Form's flags. You can examine those flags in xEdit for more information.");
-        this.MI_CHANGEFORMCONTENTFILTER.setToolTipText("Sets a ChangeForm content filter. Advanced!");
-        this.MI_REMOVENONEXISTENT.setToolTipText("Removes ScriptInstances attached to non-existent ChangeForms. These ScriptInstances can be left behind when in-game objects are created and then destroyed. Cleaning them can cause some mods to stop working though.");
-        this.MI_REMOVEUNATTACHED.setToolTipText("Removes ScriptInstances that aren't attached to anything. These ScriptInstances are usually left behind when mods are uinstalled. However in Fallout 4 they are used deliberately, so use caution when removing them.");
-        this.MI_REMOVEUNDEFINED.setToolTipText("Removes Scripts and ScriptInstances for which the script itself is missing, as well as terminating any ActiveScripts associated with them. SKSE and F4SE usually remove these automatically; if it doesn't, there's probably a good reason. So use caution when removing them.");
+        this.MI_CHANGEFILTER.setToolTipText("Задаёт фильтр ChangeFlag. ChangeFlags описывают, какие изменения присутствуют в ChangeForms.");
+        this.MI_CHANGEFORMFILTER.setToolTipText("Задаёт фильтр ChangeFormFlag. ChangeFormFlags — часть ChangeForm, изменяющая флаги формы. Подробнее эти флаги можно посмотреть в xEdit.");
+        this.MI_CHANGEFORMCONTENTFILTER.setToolTipText("Задаёт фильтр содержимого ChangeForm. Для продвинутых!");
+        this.MI_REMOVENONEXISTENT.setToolTipText("Удаляет ScriptInstances, привязанные к несуществующим ChangeForms. Такие экземпляры остаются, когда игровые объекты создаются и затем уничтожаются. Однако их очистка может привести к тому, что некоторые моды перестанут работать.");
+        this.MI_REMOVEUNATTACHED.setToolTipText("Удаляет ScriptInstances, не привязанные ни к чему. Обычно они остаются после удаления модов. Однако в Fallout 4 они используются намеренно, поэтому удаляйте с осторожностью.");
+        this.MI_REMOVEUNDEFINED.setToolTipText("Удаляет скрипты и ScriptInstances, у которых отсутствует сам скрипт, а также завершает связанные с ними ActiveScripts. SKSE и F4SE обычно убирают их автоматически; если этого не произошло, скорее всего, на то есть причина. Удаляйте с осторожностью.");
 
         final javax.swing.border.Border BORDER = BorderFactory.createCompoundBorder(BorderFactory.createLoweredBevelBorder(), BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -439,8 +439,8 @@ final public class SaveWindow extends JFrame {
 
         this.MI_SHOWNONEXISTENTCREATED.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                final String WARN = "Non-existent forms are used intentionally by some mods. Use caution when deleting them.";
-                final String WARN_TITLE = "Warning";
+                final String WARN = "Некоторые моды используют несуществующие формы намеренно. Удаляйте их с осторожностью.";
+                final String WARN_TITLE = "Предупреждение";
                 JOptionPane.showMessageDialog(this, WARN, WARN_TITLE, JOptionPane.WARNING_MESSAGE);
             }
         });
@@ -469,7 +469,7 @@ final public class SaveWindow extends JFrame {
             final Image ICON = javax.imageio.ImageIO.read(INPUT);
             super.setIconImage(ICON);
         } catch (IOException | NullPointerException | IllegalArgumentException ex) {
-            LOG.warning("Failed to load icon.");
+            LOG.warning("Не удалось загрузить значок.");
         }
         this.MODCOMBO.addItemListener(e -> updateFilters(false));
         this.PLUGINCOMBO.addItemListener(e -> updateFilters(false));
@@ -496,7 +496,7 @@ final public class SaveWindow extends JFrame {
         this.modified = false;
 
         if (this.save == null) {
-            final String TITLE = String.format("ReSaver Renewed %s: (no save loaded)", AboutDialog.getVersion());
+            final String TITLE = String.format("ReSaver Renewed %s: (сейв не загружен)", AboutDialog.getVersion());
             this.setTitle(TITLE);
 
         } else {
@@ -505,7 +505,7 @@ final public class SaveWindow extends JFrame {
             try {
                 size = (float) Files.size(savefile) / 1048576.0f;
             } catch (IOException ex) {
-                LOG.log(Level.WARNING, "Error setting title.", ex);
+                LOG.log(Level.WARNING, "Ошибка установки заголовка.", ex);
                 size = Float.NEGATIVE_INFINITY;
             }
 
@@ -519,7 +519,7 @@ final public class SaveWindow extends JFrame {
                     ? (fullName.substring(0, MAXLEN) + "...")
                     : fullName);
 
-            final String TITLE = String.format("ReSaver Renewed %s: %s (%1.2f mb, digest = %08x)", AboutDialog.getVersion(), NAME, size, DIGEST);
+            final String TITLE = String.format("ReSaver Renewed %s: %s (%1.2f МБ, digest = %08x)", AboutDialog.getVersion(), NAME, size, DIGEST);
             this.setTitle(TITLE);
         }
     }
@@ -645,7 +645,7 @@ final public class SaveWindow extends JFrame {
         this.resetTitle(null);
         this.clearContextInformation();
 
-        final String TITLE = String.format("ReSaver %s: (no save loaded)", AboutDialog.getVersion());
+        final String TITLE = String.format("ReSaver %s: (сейв не загружен)", AboutDialog.getVersion());
         this.setTitle(TITLE);
     }
 
@@ -795,7 +795,7 @@ final public class SaveWindow extends JFrame {
                 return true;
             }                       
         } catch (Throwable ex) {
-            LOG.log(Level.WARNING, "Error creating filters.", ex);
+            LOG.log(Level.WARNING, "Ошибка создания фильтров.", ex);
             throw ex;
         } finally {
             TIMER.stop();
@@ -870,7 +870,7 @@ final public class SaveWindow extends JFrame {
                     MODEL.setValue(10);
 
                 } catch (Throwable ex) {
-                    LOG.log(Level.WARNING, "Error updating filters.", ex);
+                    LOG.log(Level.WARNING, "Ошибка обновления фильтров.", ex);
                 } finally {
                     TIMER.stop();
                     PROGRESS.stop();
@@ -878,7 +878,7 @@ final public class SaveWindow extends JFrame {
                 }
             });
         } catch (Throwable ex) {
-            LOG.log(Level.WARNING, "Error updating filters.", ex);
+            LOG.log(Level.WARNING, "Ошибка обновления фильтров.", ex);
         }
     }
 
@@ -891,7 +891,7 @@ final public class SaveWindow extends JFrame {
             try {
                 PREFS.flush();
             } catch (BackingStoreException ex) {
-                LOG.log(Level.WARNING, "Error saving preferences.", ex);
+                LOG.log(Level.WARNING, "Ошибка сохранения настроек.", ex);
             }
             this.FILTERFIELD.terminate();
             this.LBL_MEMORY.terminate();
@@ -906,7 +906,7 @@ final public class SaveWindow extends JFrame {
      */
     void exitWithPrompt() {
         if (null != this.save && this.modified) {
-            int result = JOptionPane.showConfirmDialog(this, "Do you want to save the current file first?", "Save First?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(this, "Сохранить текущий файл сначала?", "Сначала сохранить?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
             switch (result) {
                 case JOptionPane.CANCEL_OPTION:
@@ -949,7 +949,7 @@ final public class SaveWindow extends JFrame {
                 return null;
             });
 
-            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "File Selection", PROMPT);
+            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "Выбор файла", PROMPT);
             MODAL.setVisible(true);
             final Path SAVEFILE = PROMPT.get();
 
@@ -961,7 +961,7 @@ final public class SaveWindow extends JFrame {
             SAVER.execute();
 
         } catch (InterruptedException | ExecutionException ex) {
-            LOG.log(Level.SEVERE, "Error while saving.", ex);
+            LOG.log(Level.SEVERE, "Ошибка при сохранении.", ex);
         }
     }
 
@@ -986,7 +986,7 @@ final public class SaveWindow extends JFrame {
             this.open();
 
         } else {
-            int result = JOptionPane.showConfirmDialog(this, "Do you want to save the current file first?", "Save First?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(this, "Сохранить текущий файл сначала?", "Сначала сохранить?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             switch (result) {
                 case JOptionPane.YES_OPTION:
                     this.save(false, () -> this.open());
@@ -1074,8 +1074,8 @@ final public class SaveWindow extends JFrame {
                 final TextDialog TEXT = new TextDialog(SOURCE.stream().collect(Collectors.joining("<br/>", "<pre>", "</pre>")));
                 JOptionPane.showMessageDialog(this, TEXT, path.getFileName().toString(), JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException | RuntimeException ex) {
-                LOG.log(Level.WARNING, "Error while decompiling drag-and-drop script.", ex);
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "Decompile Error", JOptionPane.ERROR_MESSAGE);
+                LOG.log(Level.WARNING, "Ошибка при декомпиляции скрипта, брошенного мышью.", ex);
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Ошибка декомпиляции", JOptionPane.ERROR_MESSAGE);
             }
 
         } else if (Configurator.GLOB_INI.matches(path)) {
@@ -1132,8 +1132,8 @@ final public class SaveWindow extends JFrame {
                             }
                         }
                     } catch (InterruptedException|ExecutionException ex) {
-                        LOG.severe("There was a problem getting the analysis.");
-                        JOptionPane.showMessageDialog(this, "There was a problem getting the analysis.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        LOG.severe("Возникла проблема при получении анализа.");
+                        JOptionPane.showMessageDialog(this, "Возникла проблема при получении анализа.", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
                 });
 
@@ -1182,19 +1182,19 @@ final public class SaveWindow extends JFrame {
         }
 
         try (BufferedWriter out = Files.newBufferedWriter(EXPORT)) {
-            out.write("# This file was deliberately generated by ReSaver.\n");
+            out.write("# Этот файл создан программой ReSaver.\n");
             for (Plugin plugin : this.save.getPluginInfo().getAllPlugins()) {
                 out.write(plugin.NAME);
                 out.write('\n');
             }
 
-            final String MSG = String.format("Plugins list exported.");
-            JOptionPane.showMessageDialog(SaveWindow.this, MSG, "Success", JOptionPane.INFORMATION_MESSAGE);
+            final String MSG = String.format("Список плагинов экспортирован.");
+            JOptionPane.showMessageDialog(SaveWindow.this, MSG, "Успешно", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException ex) {
-            final String MSG = String.format("Error while writing file \"%s\".\n%s", EXPORT.getFileName(), ex.getMessage());
-            LOG.log(Level.SEVERE, "Error while exporting plugin list.", ex);
-            JOptionPane.showMessageDialog(SaveWindow.this, MSG, "Write Error", JOptionPane.ERROR_MESSAGE);
+            final String MSG = String.format("Ошибка при записи файла \"%s\".\n%s", EXPORT.getFileName(), ex.getMessage());
+            LOG.log(Level.SEVERE, "Ошибка при экспорте списка плагинов.", ex);
+            JOptionPane.showMessageDialog(SaveWindow.this, MSG, "Ошибка записи", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1202,8 +1202,8 @@ final public class SaveWindow extends JFrame {
      * Prompts the user for a name, and finds the corresponding ID.
      */
     private void lookupID() {
-        final String MSG = "Enter the name of the object or NPC:";
-        final String TITLE = "Enter Name";
+        final String MSG = "Введите имя объекта или NPC:";
+        final String TITLE = "Введите имя";
 
         String searchTerm = JOptionPane.showInputDialog(this, MSG, TITLE, JOptionPane.QUESTION_MESSAGE);
         if (null == searchTerm || searchTerm.trim().isEmpty()) {
@@ -1212,10 +1212,10 @@ final public class SaveWindow extends JFrame {
 
         analysis.map(an -> an.find(searchTerm)).ifPresent(matches -> {
             if (matches.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No matches were found.", "No matches", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Совпадения не найдены.", "Нет совпадений", JOptionPane.ERROR_MESSAGE);
             } else {
                 final StringBuilder BUF = new StringBuilder();
-                BUF.append("The following matches were found:\n\n");
+                BUF.append("Найдены следующие совпадения:\n\n");
 
                 matches.forEach(id -> {
                     BUF.append(String.format("%08x", id));
@@ -1230,7 +1230,7 @@ final public class SaveWindow extends JFrame {
                     BUF.append('\n');
                 });
 
-                JOptionPane.showMessageDialog(this, BUF.toString(), "Matches", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, BUF.toString(), "Совпадения", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println(matches);
             }
         });
@@ -1266,10 +1266,10 @@ final public class SaveWindow extends JFrame {
         try {
             final ESS.Result RESULT = ESS.readESS(otherPath, new ModelBuilder(new ProgressModel(1)));
             ESS.verifyIdentical(this.save, RESULT.ESS);
-            JOptionPane.showMessageDialog(this, "No mismatches detected.", "Match", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Расхождений не обнаружено.", "Совпадение", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (RuntimeException | IOException | ElementException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "MisMatch", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Расхождение", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1283,26 +1283,26 @@ final public class SaveWindow extends JFrame {
                 return;
             }
 
-            LOG.info("Cleaning unattached instances.");
+            LOG.info("Очистка неподключённых экземпляров.");
 
             Papyrus papyrus = this.save.getPapyrus();
             final Set<PapyrusElement> REMOVED = papyrus.removeUnattachedInstances();
 
             if (!REMOVED.isEmpty()) {
-                String msg = String.format("Removed %d orphaned script instances.", REMOVED.size());
+                String msg = String.format("Удалено сиротских экземпляров скриптов: %d.", REMOVED.size());
                 LOG.info(msg);
-                JOptionPane.showMessageDialog(this, msg, "Cleaned", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, msg, "Очищено", JOptionPane.INFORMATION_MESSAGE);
 
                 this.deleteNodesFor(REMOVED);
                 this.setModified();
 
             } else {
-                JOptionPane.showMessageDialog(this, "No unattached instances were found.", "None Found", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Неподключённые экземпляры не найдены.", "Ничего не найдено", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (HeadlessException ex) {
-            final String MSG = "Error cleaning unattached scripts.";
-            final String TITLE = "Cleaning Error";
+            final String MSG = "Ошибка при очистке неподключённых скриптов.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
         }
@@ -1317,7 +1317,7 @@ final public class SaveWindow extends JFrame {
                 return;
             }
 
-            LOG.info("Cleaning undefined elements.");
+            LOG.info("Очистка неопределённых элементов.");
             Papyrus papyrus = this.save.getPapyrus();
             Set<PapyrusElement> REMOVED = papyrus.removeUndefinedElements();
             Set<ActiveScript> TERMINATED = papyrus.terminateUndefinedThreads();
@@ -1327,23 +1327,23 @@ final public class SaveWindow extends JFrame {
                 if (!REMOVED.isEmpty()) {
                     this.deleteNodesFor(REMOVED);
                     this.setModified();
-                    BUF.append("Removed ").append(REMOVED.size()).append(" undefined elements.");
+                    BUF.append("Удалено ").append(REMOVED.size()).append(" неопределённых элементов.");
                 }
                 if (!TERMINATED.isEmpty()) {
-                    BUF.append("Terminated ").append(TERMINATED).append(" undefined threads.");
+                    BUF.append("Завершено ").append(TERMINATED).append(" неопределённых потоков.");
                 }
 
                 final String MSG = BUF.toString();
                 LOG.info(MSG);
-                JOptionPane.showMessageDialog(this, MSG, "Cleaned", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, MSG, "Очищено", JOptionPane.INFORMATION_MESSAGE);
 
             } else {
-                JOptionPane.showMessageDialog(this, "No undefined elements were found.", "None Found", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Неопределённые элементы не найдены.", "Ничего не найдено", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (HeadlessException ex) {
-            final String MSG = "Error cleaning undefined elements.";
-            final String TITLE = "Cleaning Error";
+            final String MSG = "Ошибка при очистке неопределённых элементов.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
         }
@@ -1357,32 +1357,32 @@ final public class SaveWindow extends JFrame {
             return;
          }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure? Editing changeforms is dangerous.", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Вы уверены? Редактирование ChangeForms опасно.", "Вы уверены?", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
         
         try {
             final FutureTask<int[]> STRIP = new FutureTask<>(() -> {
-                LOG.info("Stripping havok data.");
+                LOG.info("Удаляю данные Havok.");
                 return this.save.resetHavok(this.analysis);
             });
 
-            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "Stripping...", STRIP);
+            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "Удаление...", STRIP);
             MODAL.setVisible(true);
             int[] results = STRIP.get();
 
             this.setModified();
-            final String MSG = String.format("Succeeded on %d changeforms.\nFailed on %d changeforms.", results[0], results[1]);
-            final String TITLE = "Havok Result";
+            final String MSG = String.format("Успешно для ChangeForms: %d.\nСо сбоем для ChangeForms: %d.", results[0], results[1]);
+            final String TITLE = "Результат сброса Havok";
             LOG.info(MSG);
             JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
 
             this.refreshTree();
 
         } catch (InterruptedException | ExecutionException | HeadlessException ex) {
-            final String MSG = "Error stripping havok data.";
-            final String TITLE = "Stripping Error";
+            final String MSG = "Ошибка при удалении данных Havok.";
+            final String TITLE = "Ошибка удаления";
             LOG.log(Level.SEVERE, MSG, ex);
             ex.printStackTrace(System.err);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
@@ -1397,31 +1397,31 @@ final public class SaveWindow extends JFrame {
             return;
         }
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure? Editing changeforms is dangerous.", "Are you sure?", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Вы уверены? Редактирование ChangeForms опасно.", "Вы уверены?", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
 
         try {
             final FutureTask<int[]> CLEANSE = new FutureTask<>(() -> {
-                LOG.info("Cleansing formlists.");
+                LOG.info("Очистка формлистов.");
                 return this.save.cleanseFormLists(this.analysis);
             });
 
-            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "Cleansing...", CLEANSE);
+            final ModalProgressDialog MODAL = new ModalProgressDialog(this, "Очистка...", CLEANSE);
             MODAL.setVisible(true);
             int[] results = CLEANSE.get();
             
             if (results[0] == 0) {
-                final String MSG = "No nullrefs were found in any formlists.";
-                final String TITLE = "No nullrefs found.";
+                final String MSG = "Ни в одном формлисте пустых ссылок не найдено.";
+                final String TITLE = "Пустые ссылки не найдены.";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
 
             } else {
                 this.setModified();
-                final String MSG = String.format("%d nullrefs were cleansed from %d formlists.", results[0], results[1]);
-                final String TITLE = "Nullrefs cleansed.";
+                final String MSG = String.format("Удалено пустых ссылок: %d (в %d формлистах).", results[0], results[1]);
+                final String TITLE = "Пустые ссылки удалены.";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1429,8 +1429,8 @@ final public class SaveWindow extends JFrame {
             this.refreshTree();
 
         } catch (InterruptedException | ExecutionException | HeadlessException ex) {
-            final String MSG = "Error cleansing formlists.";
-            final String TITLE = "Cleansing Error";
+            final String MSG = "Ошибка при очистке формлистов.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             ex.printStackTrace(System.err);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
@@ -1447,18 +1447,18 @@ final public class SaveWindow extends JFrame {
                 return;
             }
 
-            LOG.info(String.format("Cleansing formlist %s.", flst));
+            LOG.info(String.format("Очистка формлиста %s.", flst));
             int result = flst.cleanse();
 
             if (result == 0) {
-                final String MSG = "No nullrefs were found.";
-                final String TITLE = "No nullrefs found.";
+                final String MSG = "Пустые ссылки не найдены.";
+                final String TITLE = "Пустые ссылки не найдены.";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             } else {
                 this.setModified();
-                final String MSG = String.format("%d nullrefs were cleansed.", result);
-                final String TITLE = "Nullrefs cleansed.";
+                final String MSG = String.format("Удалено пустых ссылок: %d.", result);
+                final String TITLE = "Пустые ссылки удалены.";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1466,8 +1466,8 @@ final public class SaveWindow extends JFrame {
             this.refreshTree();
 
         } catch (HeadlessException ex) {
-            final String MSG = "Error cleansing formlists.";
-            final String TITLE = "Cleansing Error";
+            final String MSG = "Ошибка при очистке формлистов.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
         }
@@ -1478,8 +1478,8 @@ final public class SaveWindow extends JFrame {
      */
     private void cleanNonexistent() {
         // Check with the user first. This operation can mess up mods.
-        final String WARN = "This cleaning operation can cause some mods to stop working. Are you sure you want to do this?";
-        final String WARN_TITLE = "Warning";
+        final String WARN = "Эта операция очистки может привести к тому, что некоторые моды перестанут работать. Вы уверены, что хотите это сделать?";
+        final String WARN_TITLE = "Предупреждение";
         int confirm = JOptionPane.showConfirmDialog(this, WARN, WARN_TITLE, JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
@@ -1490,18 +1490,18 @@ final public class SaveWindow extends JFrame {
                 return;
             }
 
-            LOG.info(String.format("Removing nonexistent created forms."));
+            LOG.info(String.format("Удаление несуществующих созданных форм."));
             final Set<PapyrusElement> REMOVED = this.save.removeNonexistentCreated();
 
             if (!REMOVED.isEmpty()) {
-                final String MSG = "No scripts attached to non-existent created forms were found.";
-                final String TITLE = "No non-existent created";
+                final String MSG = "Скрипты на несуществующих созданных формах не найдены.";
+                final String TITLE = "Несуществующих созданных форм нет";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             } else {
                 this.setModified();
-                final String MSG = String.format("%d instances were removed.", REMOVED.size());
-                final String TITLE = "Instances removed.";
+                final String MSG = String.format("Удалено экземпляров: %d.", REMOVED.size());
+                final String TITLE = "Экземпляры удалены.";
                 LOG.info(MSG);
                 JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1509,8 +1509,8 @@ final public class SaveWindow extends JFrame {
             this.deleteNodesFor(REMOVED);
 
         } catch (HeadlessException ex) {
-            final String MSG = "Error cleansing non-existent created.";
-            final String TITLE = "Cleansing Error";
+            final String MSG = "Ошибка при очистке несуществующих созданных форм.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
         }
@@ -1582,8 +1582,8 @@ final public class SaveWindow extends JFrame {
             this.deleteNodesFor(REMOVED);
 
         } catch (Exception ex) {
-            final String MSG = "Error cleansing formlists.";
-            final String TITLE = "Cleansing Error";
+            final String MSG = "Ошибка при очистке формлистов.";
+            final String TITLE = "Ошибка очистки";
             LOG.log(Level.SEVERE, MSG, ex);
             JOptionPane.showMessageDialog(SaveWindow.this, MSG, TITLE, JOptionPane.ERROR_MESSAGE);
         }
@@ -1622,7 +1622,7 @@ final public class SaveWindow extends JFrame {
 
             this.LBL_WATCHING.setToolTipText(watchDirectories.stream()
                     .map(p -> p.toString())
-                    .collect(Collectors.joining("<li>", "<html>Watching:<ul><li>", "</ul></html>")));
+                    .collect(Collectors.joining("<li>", "<html>Отслеживание:<ul><li>", "</ul></html>")));
             
             if (!this.MI_WATCHSAVES.isSelected()) {
                 this.MI_WATCHSAVES.setSelected(true);
@@ -1653,7 +1653,7 @@ final public class SaveWindow extends JFrame {
      *
      */
     private void showLog() {
-        JDialog dialog = new JDialog(this, "Log");
+        JDialog dialog = new JDialog(this, "Журнал");
         dialog.setContentPane(this.LOGWINDOW);
         dialog.setModalityType(JDialog.ModalityType.MODELESS);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -1706,8 +1706,8 @@ final public class SaveWindow extends JFrame {
     private void setChangeFormContentFilter() {
         String result = (String)JOptionPane.showInputDialog(
                this,
-               "Enter field codes for content filter:", 
-               "ChangeForm content filter",            
+               "Введите коды полей для фильтра содержимого:", 
+               "Фильтр содержимого ChangeForm",            
                JOptionPane.QUESTION_MESSAGE,
                null,            
                null, 
@@ -1763,7 +1763,7 @@ final public class SaveWindow extends JFrame {
         TreePath path = this.TREE.findPath(element);
 
         if (null == path) {
-            JOptionPane.showMessageDialog(this, "The element was not found.", "Not Found", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Элемент не найден.", "Не найдено", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -1790,7 +1790,7 @@ final public class SaveWindow extends JFrame {
                     .collect(Collectors.toSet());
             NUM_INSTANCES = INSTANCES.size();
             Set<PapyrusElement> REMOVED = this.save.getPapyrus().removeElements(INSTANCES);
-            assert REMOVED.size() == NUM_INSTANCES : String.format("Deleted %d/%d instances.", REMOVED.size(), NUM_INSTANCES);
+            assert REMOVED.size() == NUM_INSTANCES : String.format("Удалено экземпляров: %d из %d.", REMOVED.size(), NUM_INSTANCES);
 
             if (!REMOVED.isEmpty()) {
                 this.deleteNodesFor(REMOVED);
@@ -1806,7 +1806,7 @@ final public class SaveWindow extends JFrame {
                     .collect(Collectors.toSet());
             NUM_FORMS = FORMS.size();
             final Set<ChangeForm> REMOVED = this.save.removeChangeForms(FORMS);
-            assert REMOVED.size() == NUM_FORMS : String.format("Deleted %d/%d forms.", REMOVED.size(), NUM_FORMS);
+            assert REMOVED.size() == NUM_FORMS : String.format("Удалено форм: %d из %d.", REMOVED.size(), NUM_FORMS);
 
             if (!REMOVED.isEmpty()) {
                 this.deleteNodesFor(REMOVED);
@@ -1816,25 +1816,25 @@ final public class SaveWindow extends JFrame {
             NUM_FORMS = 0;
         }
 
-        final String TITLE = "Plugin Purge";
+        final String TITLE = "Чистка плагинов";
 
         if (NUM_INSTANCES > 0 && NUM_FORMS == 0) {
-            final String FORMAT = "Deleted %d script instances from %d plugins.";
+            final String FORMAT = "Удалено экземпляров скриптов: %d (плагинов: %d).";
             final String MSG = String.format(FORMAT, NUM_INSTANCES, plugins.size());
             JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
 
         } else if (NUM_INSTANCES == 0 && NUM_FORMS > 0) {
-            final String FORMAT = "Deleted %d changeforms from %d plugins.";
+            final String FORMAT = "Удалено ChangeForms: %d (плагинов: %d).";
             final String MSG = String.format(FORMAT, NUM_FORMS, plugins.size());
             JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
 
         } else if (NUM_INSTANCES > 0 && NUM_FORMS > 0) {
-            final String FORMAT = "Deleted %d script instances and %d changeforms from %d plugins.";
+            final String FORMAT = "Удалено: экземпляров скриптов %d, ChangeForms %d (плагинов: %d).";
             final String MSG = String.format(FORMAT, NUM_INSTANCES, NUM_FORMS, plugins.size());
             JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            final String MSG = "There was nothing to delete.";
+            final String MSG = "Удалять было нечего.";
             JOptionPane.showMessageDialog(this, MSG, TITLE, JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -1852,9 +1852,9 @@ final public class SaveWindow extends JFrame {
         }
 
         final String QUESTION = threads.size() > 1
-                ? String.format("Are you sure you want to terminate these %d threads?", threads.size())
-                : "Are you sure you want to terminate this thread?";
-        final String TITLE = "Thread Termination";
+                ? String.format("Вы уверены, что хотите завершить эти потоки (%d шт.)?", threads.size())
+                : "Вы уверены, что хотите завершить этот поток?";
+        final String TITLE = "Завершение потоков";
         int result = JOptionPane.showConfirmDialog(this, QUESTION, TITLE, JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.NO_OPTION) {
             return;
@@ -1865,10 +1865,10 @@ final public class SaveWindow extends JFrame {
         this.refreshTree();
 
         final String MSG = threads.size() > 1
-                ? "Thread terminated and zeroed."
-                : "Threads terminated and zeroed.";
+                ? "Поток завершён и обнулён."
+                : "Потоки завершены и обнулёны.";
         LOG.info(MSG);
-        JOptionPane.showMessageDialog(this, MSG, "Thread Termination", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, MSG, "Завершение потоков", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -1898,16 +1898,16 @@ final public class SaveWindow extends JFrame {
             final String WARNING;
 
             if (ESS.THREAD.test(ELEMENT)) {
-                WARNING = String.format("Element \"%s\" is a Papyrus thread. Deleting it could make your savefile impossible to load. Are you sure you want to proceed?", ELEMENT.toString());
+                WARNING = String.format("Элемент \"%s\" — это поток Papyrus. Его удаление может сделать сейв незагружаемым. Вы уверены, что хотите продолжить?", ELEMENT.toString());
             } else if (ESS.DELETABLE.test(ELEMENT)) {
-                WARNING = String.format("Are you sure you want to delete this element?\n%s", ELEMENT);
+                WARNING = String.format("Вы уверены, что хотите удалить этот элемент?\n%s", ELEMENT);
             } else if (ELEMENT instanceof SuspendedStack) {
-                WARNING = String.format("Element \"%s\" is a Suspended Stack. Deleting it could make your savefile impossible to load. Are you sure you want to proceed?", ELEMENT.toString());
+                WARNING = String.format("Элемент \"%s\" — это приостановленный стек. Его удаление может сделать сейв незагружаемым. Вы уверены, что хотите продолжить?", ELEMENT.toString());
             } else {
                 return;
             }
 
-            final String TITLE = "Warning";
+            final String TITLE = "Предупреждение";
             int result = JOptionPane.showConfirmDialog(this, WARNING, TITLE, JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.CANCEL_OPTION) {
                 return;
@@ -1917,12 +1917,12 @@ final public class SaveWindow extends JFrame {
             this.deleteNodesFor(REMOVED);
 
             if (REMOVED.containsAll(elements)) {
-                final String MSG = String.format("Element Deleted:\n%s", ELEMENT);
-                JOptionPane.showMessageDialog(this, MSG, "Element Deleted", JOptionPane.INFORMATION_MESSAGE);
+                final String MSG = String.format("Элемент удалён:\n%s", ELEMENT);
+                JOptionPane.showMessageDialog(this, MSG, "Элемент удалён", JOptionPane.INFORMATION_MESSAGE);
                 LOG.info(MSG);
             } else {
-                final String MSG = String.format("Couldn't delete element:\n%s", ELEMENT);
-                JOptionPane.showMessageDialog(this, MSG, "Error", JOptionPane.ERROR_MESSAGE);
+                final String MSG = String.format("Не удалось удалить элемент:\n%s", ELEMENT);
+                JOptionPane.showMessageDialog(this, MSG, "Ошибка", JOptionPane.ERROR_MESSAGE);
                 LOG.warning(MSG);
             }
 
@@ -1946,8 +1946,8 @@ final public class SaveWindow extends JFrame {
 
             boolean deleteStacks = false;
             if (!STACKS.isEmpty()) {
-                final String WARN = "Deleting Suspended Stacks could make your savefile impossible to load.\nAre you sure you want to delete the Suspended Stacks?\nIf you select \"No\" then they will be skipped instead of deleted.";
-                final String TITLE = "Warning";
+                final String WARN = "Удаление приостановленных стеков может сделать сейв незагружаемым.\nВы уверены, что хотите удалить приостановленные стеки?\nЕсли выбрать «Нет», они будут пропущены, а не удалены.";
+                final String TITLE = "Предупреждение";
                 int result = JOptionPane.showConfirmDialog(this, WARN, TITLE, JOptionPane.YES_NO_CANCEL_OPTION);
                 if (result == JOptionPane.CANCEL_OPTION) {
                     return;
@@ -1957,8 +1957,8 @@ final public class SaveWindow extends JFrame {
 
             boolean deleteThreads = false;
             if (!THREADS.isEmpty()) {
-                final String WARN = "Deleting Active Scripts could make your savefile impossible to load.\nAre you sure you want to delete the Active Scripts?\nIf you select \"No\" then they will be terminated instead of deleted.";
-                final String TITLE = "Warning";
+                final String WARN = "Удаление активных скриптов может сделать сейв незагружаемым.\nВы уверены, что хотите удалить активные скрипты?\nЕсли выбрать «Нет», они будут завершены, а не удалены.";
+                final String TITLE = "Предупреждение";
                 int result = JOptionPane.showConfirmDialog(this, WARN, TITLE, JOptionPane.YES_NO_CANCEL_OPTION);
                 if (result == JOptionPane.CANCEL_OPTION) {
                     return;
@@ -1978,14 +1978,14 @@ final public class SaveWindow extends JFrame {
             if (DELETABLE.isEmpty() && THREADS.isEmpty()) {
                 return;
             } else if (count == 0 && !THREADS.isEmpty()) {
-                QUESTION = String.format("Are you sure you want to terminate these %d Active Scripts?", THREADS.size());
+                QUESTION = String.format("Вы уверены, что хотите завершить эти активные скрипты (%d шт.)?", THREADS.size());
             } else if (deleteThreads || (count > 0 && THREADS.isEmpty())) {
-                QUESTION = String.format("Are you sure you want to delete these %d elements and their dependents?", count);
+                QUESTION = String.format("Вы уверены, что хотите удалить эти элементы (%d шт.) и все зависимые от них?", count);
             } else {
-                QUESTION = String.format("Are you sure you want to terminate these %d Active Scripts and delete these %d elements and their dependents?", THREADS.size(), count);
+                QUESTION = String.format("Вы уверены, что хотите завершить эти активные скрипты (%d шт.) и удалить элементы (%d шт.) с их зависимостями?", THREADS.size(), count);
             }
 
-            int result = JOptionPane.showConfirmDialog(this, QUESTION, "Delete Elements", JOptionPane.YES_NO_OPTION);
+            int result = JOptionPane.showConfirmDialog(this, QUESTION, "Удалить элементы", JOptionPane.YES_NO_OPTION);
             if (result == JOptionPane.NO_OPTION) {
                 return;
             }
@@ -2003,16 +2003,16 @@ final public class SaveWindow extends JFrame {
             this.deleteNodesFor(REMOVED);
 
             final StringBuilder BUF = new StringBuilder();
-            BUF.append(REMOVED.size()).append(" elements deleted.");
+            BUF.append(REMOVED.size()).append(" элементов удалено.");
 
             if (!THREADS.isEmpty()) {
                 BUF.append("\n").append(THREADS.size());
-                BUF.append(deleteThreads ? " threads terminated and deleted." : " threads terminated.");
+                BUF.append(deleteThreads ? " потоков завершено и удалено." : " потоков завершено.");
             }
 
             final String MSG = BUF.toString();
             LOG.info(MSG);
-            JOptionPane.showMessageDialog(this, MSG, "Elements Deleted", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, MSG, "Элементы удалены", JOptionPane.INFORMATION_MESSAGE);
         }
 
         // Select the next row.
@@ -2026,7 +2026,7 @@ final public class SaveWindow extends JFrame {
      */
     void setCompressionType(CompressionType newCompressionType) {
         if (this.save != null && this.save.supportsCompression() && newCompressionType != null) {
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to change the compression type?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            int result = JOptionPane.showConfirmDialog(this, "Вы уверены, что хотите сменить тип сжатия?", "Подтверждение", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if (result == JOptionPane.YES_OPTION) {
                 this.save.getHeader().setCompression(newCompressionType);
                 this.setModified();
@@ -2052,15 +2052,15 @@ final public class SaveWindow extends JFrame {
     private void editElement(Element element) {
         if (element instanceof GlobalVariable) {
             final GlobalVariable VAR = (GlobalVariable) element;
-            String response = JOptionPane.showInputDialog(this, "Input new value:", VAR.getValue());
+            String response = JOptionPane.showInputDialog(this, "Введите новое значение:", VAR.getValue());
             if (null != response) {
                 try {
                     float newVal = Float.parseFloat(response);
                     VAR.setValue(newVal);
-                    JOptionPane.showMessageDialog(this, "GlobalVariable updated.", "Success", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Глобальная переменная обновлена.", "Успешно", JOptionPane.PLAIN_MESSAGE);
 
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(this, "Invalid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Неверное число.", "Ошибка", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -2124,7 +2124,7 @@ final public class SaveWindow extends JFrame {
                     final Style STYLE = new StyleContext().getStyle(StyleContext.DEFAULT_STYLE);
                     final JLabel IMAGELABEL = new JLabel(this.save.getHeader().getImage(ICONWIDTH));
                     StyleConstants.setComponent(STYLE, IMAGELABEL);
-                    DOC.insertString(DOC.getLength(), "Ignored", STYLE);
+                    DOC.insertString(DOC.getLength(), "Игнорируется", STYLE);
                     
                     IMAGELABEL.addMouseListener(new MouseAdapter() {
                         @Override public void mousePressed(MouseEvent e) {
@@ -2134,7 +2134,7 @@ final public class SaveWindow extends JFrame {
                             if (e.isPopupTrigger()) doPop(e);
                         }
                         private void doPop(MouseEvent e) {
-                            JMenuItem copy = new JMenuItem("Copy to Clipboard");
+                            JMenuItem copy = new JMenuItem("Копировать в буфер обмена");
                             JPopupMenu menu = new JPopupMenu();
                             menu.add(copy);
                             copy.addActionListener(ae -> ImageTransferable.CopyToClipboard(IMAGE.getImage()));
@@ -2143,7 +2143,7 @@ final public class SaveWindow extends JFrame {
                     });
                 }
             } catch (javax.swing.text.BadLocationException ex) {
-                LOG.log(Level.WARNING, "Error displaying ESS context information.", ex);
+                LOG.log(Level.WARNING, "Ошибка при показе контекстной информации ESS.", ex);
             }
 
         } else if (element instanceof AnalyzableElement) {
@@ -2194,7 +2194,7 @@ final public class SaveWindow extends JFrame {
         LOG.info(String.format("Resolving URL: %s", URL));
         final java.util.regex.Matcher MATCHER = URLPATTERN.matcher(URL);
         if (!MATCHER.find()) {
-            LOG.warning(String.format("URL could not be resolved: %s", URL));
+            LOG.warning(String.format("Не удалось разрешить URL: %s", URL));
             return;
         }
 
@@ -2349,7 +2349,7 @@ final public class SaveWindow extends JFrame {
                 }
             }
         } catch (NumberFormatException | IndexOutOfBoundsException ex) {
-            LOG.warning(String.format("Invalid address: %s", URL));
+            LOG.warning(String.format("Неверный адрес: %s", URL));
         }
     }
 
@@ -2371,7 +2371,7 @@ final public class SaveWindow extends JFrame {
             }
             return null;
         } catch (ReflectiveOperationException ex) {
-            LOG.log(Level.WARNING, "Error initializing JavaFX.", ex);
+            LOG.log(Level.WARNING, "Ошибка инициализации JavaFX.", ex);
             return null;
         }
     }
@@ -2388,7 +2388,7 @@ final public class SaveWindow extends JFrame {
                 METHOD_EXIT.invoke(null);
             }
         } catch (ReflectiveOperationException | NullPointerException ex) {
-            LOG.log(Level.WARNING, "Error terminating JavaFX.", ex);
+            LOG.log(Level.WARNING, "Ошибка завершения JavaFX.", ex);
         }
     }
 

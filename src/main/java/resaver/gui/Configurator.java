@@ -385,8 +385,8 @@ abstract public class Configurator {
                 if (result == JFileChooser.CANCEL_OPTION || null == selected) {
                     return null;
                 } else if (!validateSavegame(selected.toPath())) {
-                    final String MSG = "That does not seem to be a valid savegame.";
-                    JOptionPane.showMessageDialog(parent, MSG, "Invalid", JOptionPane.ERROR_MESSAGE);
+                    final String MSG = "Это не похоже на корректный файл сохранения.";
+                    JOptionPane.showMessageDialog(parent, MSG, "Недействительный", JOptionPane.ERROR_MESSAGE);
                 } else {
                     return setPreviousSave(selected.toPath());
                 }
@@ -408,7 +408,7 @@ abstract public class Configurator {
         LOG.info("Choosing the ModOrganizer path.");
 
         final JFileChooser CHOOSER = new JFileChooser();
-        CHOOSER.setDialogTitle("Locate ModOrganizer.ini");
+        CHOOSER.setDialogTitle("Укажите файл ModOrganizer.ini");
         CHOOSER.setFileSelectionMode(JFileChooser.FILES_ONLY);
         CHOOSER.setFileFilter(INIFILES);
         CHOOSER.setMultiSelectionEnabled(false);
@@ -422,7 +422,7 @@ abstract public class Configurator {
 
         for (;;) {
             loadChooserPrefs(CHOOSER);
-            int result = CHOOSER.showDialog(parent, "Select");
+            int result = CHOOSER.showDialog(parent, "Выбрать");
             java.io.File file = CHOOSER.getSelectedFile();
             saveChooserPrefs(CHOOSER);
 
@@ -430,14 +430,14 @@ abstract public class Configurator {
                 return null;
             } else if (!validateMO2Ini(file.toPath())) {
                 if (!Files.exists(file.toPath())) {
-                    final String MSG = String.format("That file doesn't exist:\n%s", file);
-                    JOptionPane.showMessageDialog(parent, MSG, "Doesn't Exist", JOptionPane.ERROR_MESSAGE);
+                    final String MSG = String.format("Файл не существует:\n%s", file);
+                    JOptionPane.showMessageDialog(parent, MSG, "Не существует", JOptionPane.ERROR_MESSAGE);
                 } else if (!Files.isReadable(file.toPath())) {
-                    final String MSG = String.format("That file isn't readable:\n%s", file);
-                    JOptionPane.showMessageDialog(parent, MSG, "Not readable", JOptionPane.ERROR_MESSAGE);
+                    final String MSG = String.format("Файл не читается:\n%s", file);
+                    JOptionPane.showMessageDialog(parent, MSG, "Не читается", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    final String MSG = String.format("That directory doesn't seem to contain Mod Organizer:\n%s", file);
-                    JOptionPane.showMessageDialog(parent, MSG, "Invalid", JOptionPane.ERROR_MESSAGE);
+                    final String MSG = String.format("В этой папке нет Mod Organizer:\n%s", file);
+                    JOptionPane.showMessageDialog(parent, MSG, "Недействительный", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 return setMO2Ini(game, file.toPath());
@@ -458,7 +458,7 @@ abstract public class Configurator {
         LOG.info(String.format("Choosing the %s directory.", game));
 
         final JFileChooser CHOOSER = new JFileChooser();
-        CHOOSER.setDialogTitle(String.format("Select %s directory", game.NAME));
+        CHOOSER.setDialogTitle(String.format("Выберите папку %s", game.NAME));
         CHOOSER.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         CHOOSER.setMultiSelectionEnabled(false);
 
@@ -476,8 +476,8 @@ abstract public class Configurator {
             if (null == file || result == JFileChooser.CANCEL_OPTION) {
                 return null;
             } else if (!validateGameDirectory(game, file.toPath())) {
-                final String MSG = String.format("This directory doesn't seem to be the %s directory.", game.NAME);
-                JOptionPane.showMessageDialog(parent, MSG, "Invalid", JOptionPane.ERROR_MESSAGE);
+                final String MSG = String.format("Эта папка не похожа на папку %s.", game.NAME);
+                JOptionPane.showMessageDialog(parent, MSG, "Недействительный", JOptionPane.ERROR_MESSAGE);
             } else {
                 return setGameDirectory(game, file.toPath());
             }
@@ -497,7 +497,7 @@ abstract public class Configurator {
         LOG.info("Choosing a directory to watch.");
 
         final JFileChooser CHOOSER = new JFileChooser();
-        CHOOSER.setDialogTitle("Select folder to watch");
+        CHOOSER.setDialogTitle("Выберите папку для отслеживания");
         CHOOSER.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         CHOOSER.setMultiSelectionEnabled(false);
 
@@ -518,8 +518,8 @@ abstract public class Configurator {
             if (null == file || result == JFileChooser.CANCEL_OPTION) {
                 return null;
             } else if (Files.exists(file.toPath()) && !Files.isReadable(file.toPath())) {
-                final String MSG = String.format("That directory isn't readable:\n%s", file);
-                JOptionPane.showMessageDialog(parent, MSG, "Not Readable", JOptionPane.ERROR_MESSAGE);
+                final String MSG = String.format("Папка не читается:\n%s", file);
+                JOptionPane.showMessageDialog(parent, MSG, "Не читается", JOptionPane.ERROR_MESSAGE);
             } else {
                 return setSaveDirectory(game, file.toPath());
             }
@@ -631,7 +631,7 @@ abstract public class Configurator {
             try {
                 final Game GAME = Game.valueOf(GAME_NAME);
                 setMO2Ini(GAME, mo2Ini);
-                JOptionPane.showMessageDialog(null, "Stored MO2 ini file for " + GAME.NAME, "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ini-файл MO2 сохранён для " + GAME.NAME, "Успешно", JOptionPane.INFORMATION_MESSAGE);
             } catch (IllegalArgumentException ex) {
             }
 
@@ -640,7 +640,7 @@ abstract public class Configurator {
                     .findFirst()
                     .ifPresent(game -> {
                         setMO2Ini(game, mo2Ini);
-                        JOptionPane.showMessageDialog(null, "Stored MO2 ini file for " + game.NAME, "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Ini-файл MO2 сохранён для " + game.NAME, "Успешно", JOptionPane.INFORMATION_MESSAGE);
                     });           
             
         }, () -> {
@@ -1073,7 +1073,7 @@ abstract public class Configurator {
     static private final Path MYGAMES = new JFileChooser().getFileSystemView().getDefaultDirectory().toPath().resolve("My Games");
 
     static final private ResourceBundle I18N = ResourceBundle.getBundle("Strings");
-    static private final FileNameExtensionFilter TEXTFILES = new FileNameExtensionFilter("Text file", "txt");
-    static private final FileNameExtensionFilter INIFILES = new FileNameExtensionFilter("Ini file", "ini");
+    static private final FileNameExtensionFilter TEXTFILES = new FileNameExtensionFilter("Текстовый файл", "txt");
+    static private final FileNameExtensionFilter INIFILES = new FileNameExtensionFilter("Ini-файл", "ini");
 
 }

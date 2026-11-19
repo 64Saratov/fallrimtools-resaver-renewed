@@ -49,18 +49,18 @@ final public class FilterTree extends JTree {
         this.purgeHandler = null;
         this.editHandler = null;
         this.finder = null;
-        this.MI_PURGE = new JMenuItem("Purge (1 plugin)", KeyEvent.VK_P);
-        this.MI_PURGES = new JMenuItem("Purge (%d plugins)", KeyEvent.VK_P);
-        this.MI_DELETE = new JMenuItem("Delete", KeyEvent.VK_D);
-        this.MI_FILTER = new JMenuItem("Set filter for this plugin", KeyEvent.VK_F);
-        this.MI_DELETE_FORMS = new JMenuItem("Delete plugin changeforms", KeyEvent.VK_C);
-        this.MI_DELETE_INSTANCES = new JMenuItem("Delete plugin script instances", KeyEvent.VK_S);
-        this.MI_ZERO_THREAD = new JMenuItem("Terminate", KeyEvent.VK_Z);
-        this.MI_FIND_OWNER = new JMenuItem("Find owner", KeyEvent.VK_F);
-        this.MI_CLEANSE_FLST = new JMenuItem("Cleanse Formlist", KeyEvent.VK_C);
-        this.MI_COMPRESS_UNCOMPRESSED = new JRadioButtonMenuItem("No compression");
-        this.MI_COMPRESS_ZLIB = new JRadioButtonMenuItem("ZLib compression");
-        this.MI_COMPRESS_LZ4 = new JRadioButtonMenuItem("LZ4 compression");
+        this.MI_PURGE = new JMenuItem("Очистить (1 плагин)", KeyEvent.VK_P);
+        this.MI_PURGES = new JMenuItem("Очистить (%d плагинов)", KeyEvent.VK_P);
+        this.MI_DELETE = new JMenuItem("Удалить", KeyEvent.VK_D);
+        this.MI_FILTER = new JMenuItem("Задать фильтр для этого плагина", KeyEvent.VK_F);
+        this.MI_DELETE_FORMS = new JMenuItem("Удалить changeforms плагина", KeyEvent.VK_C);
+        this.MI_DELETE_INSTANCES = new JMenuItem("Удалить экземпляры скриптов плагина", KeyEvent.VK_S);
+        this.MI_ZERO_THREAD = new JMenuItem("Завершить", KeyEvent.VK_Z);
+        this.MI_FIND_OWNER = new JMenuItem("Найти владельца", KeyEvent.VK_F);
+        this.MI_CLEANSE_FLST = new JMenuItem("Очистить формлист", KeyEvent.VK_C);
+        this.MI_COMPRESS_UNCOMPRESSED = new JRadioButtonMenuItem("Без сжатия");
+        this.MI_COMPRESS_ZLIB = new JRadioButtonMenuItem("Сжатие ZLib");
+        this.MI_COMPRESS_LZ4 = new JRadioButtonMenuItem("Сжатие LZ4");
         this.TREE_POPUP_MENU = new JPopupMenu();
         this.PLUGIN_POPUP_MENU = new JPopupMenu();
         this.COMPRESSION_POPUP_MENU = new JPopupMenu();
@@ -232,7 +232,7 @@ final public class FilterTree extends JTree {
                             PLUGIN_POPUP_MENU.show(evt.getComponent(), evt.getX(), evt.getY());
 
                         } else if (ESS.DELETABLE.test(ELEMENT) || ESS.THREAD.test(ELEMENT) || ESS.OWNABLE.test(ELEMENT)) {
-                            MI_DELETE.setText("Delete (1 element)");
+                            MI_DELETE.setText("Удалить (1 элемент)");
                             MI_DELETE.setVisible(ESS.DELETABLE.test(ELEMENT));
                             MI_ZERO_THREAD.setVisible(ESS.THREAD.test(ELEMENT));
                             MI_FIND_OWNER.setVisible(ESS.OWNABLE.test(ELEMENT));
@@ -252,14 +252,14 @@ final public class FilterTree extends JTree {
 
                         if (purgeable == ELEMENTS.size()) {
                             MI_PURGES.setEnabled(true);
-                            MI_PURGES.setText(String.format("Purge (%d plugins)", purgeable));
+                            MI_PURGES.setText(String.format("Очистить (%d плагинов)", purgeable));
                         } else {
                             MI_PURGES.setEnabled(false);
                         }
 
                         if (deletable > 0) {
                             MI_DELETE.setEnabled(true);
-                            MI_DELETE.setText(String.format("Delete (%d elements)", deletable));
+                            MI_DELETE.setText(String.format("Удалить (%d элементов)", deletable));
                         } else {
                             MI_DELETE.setEnabled(false);
                         }
